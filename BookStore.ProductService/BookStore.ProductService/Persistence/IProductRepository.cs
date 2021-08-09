@@ -1,6 +1,7 @@
 ﻿using BookStore.ProductService.Models;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace BookStore.ProductService.Persistence
 {
@@ -14,5 +15,6 @@ namespace BookStore.ProductService.Persistence
         void Remove(Guid id);
 
         void Update(Product product);
+        Task<IEnumerable<Product>> GetAllAsync();
     }
 }

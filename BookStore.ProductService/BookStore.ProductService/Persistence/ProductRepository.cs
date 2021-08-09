@@ -1,8 +1,10 @@
 ﻿using BookStore.ProductService.Context;
 using BookStore.ProductService.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace BookStore.ProductService.Persistence
 {
@@ -25,6 +27,11 @@ namespace BookStore.ProductService.Persistence
             return productContext.Products.ToList();
         }
 
+        public async Task<IEnumerable<Product>> GetAllAsync()
+        {
+            return await productContext.Products.ToListAsync();
+        }
+
         public Product GetBy(Guid id)
         {
             return productContext.Find<Product>(id);
@@ -40,5 +47,6 @@ namespace BookStore.ProductService.Persistence
         {
             productContext.Update(product);
         }
+
     }
 }
